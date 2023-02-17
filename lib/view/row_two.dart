@@ -1,303 +1,120 @@
-import 'package:first_ui/view/second_screen.dart';
+//import 'package:first_ui/view/second_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'image_second_screen.dart';
+
 class Row2 extends StatelessWidget {
-  const Row2({Key? key}) : super(key: key);
+  Row2({Key? key}) : super(key: key);
+
+  final List _name = [
+    "green chair",
+    "red chair",
+    "blue chair",
+    "black chair",
+  ];
+  final List _price = [89, 90, 34, 109];
+  final List _rate = [44, 55, 66, 55];
+  final List _images = [
+    'images/1.png',
+    'images/2.png',
+    'images/1.png',
+    'images/2.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SecondScreen()));
-            },
-            child: Container(
-              width: 160,
-              height: 140,
+    return Expanded(
+      child: ListView.builder(
+          itemCount: _name.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return RowUnder(
+              name2: _name[index],
+              price2: _price[index],
+              rate2: _rate[index],
+              image2: _images[index],
+            );
+          }),
+    );
+  }
+}
+
+class RowUnder extends StatelessWidget {
+  const RowUnder(
+      {Key? key,
+      required this.name2,
+      required this.price2,
+      required this.rate2,
+      required this.image2})
+      : super(key: key);
+
+  final String name2;
+  final String image2;
+  final int price2;
+  final int rate2;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => /*const SecondScreen()*/ MyHomePage()));
+        },
+        child: SingleChildScrollView(
+          child: Container(
+            width: 160,
+            height: 140,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
               color: const Color(0xffb2c0c5),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    const Text(
-                      "Green Chaire",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff44655f)),
-                    ),
-                    Row(
-                      children: const [
-                        Text(
-                          "\$ 65 ",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff44655f)),
-                        ),
-                        SizedBox(width: 40),
-                        Icon(
-                          Icons.star,
-                          color: Color(0xff44655f),
-                        ),
-                        Text(
-                          "4,9",
-                          style: TextStyle(
-                              color: Color(0xff44655f),
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    Container(
-                      width: 450,
-                      height: 70,
-                      child: Image.asset("images/1.png"),
-                    )
-                  ],
-                ),
-              ),
             ),
-          ),
-          const SizedBox(width: 13),
-          Container(
-            width: 160,
-            height: 140,
-            color: const Color(0xffb2c0c5),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  const Text(
-                    "Green Chaire",
-                    style: TextStyle(
+                  Text(
+                    name2,
+                    style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Color(0xff44655f)),
                   ),
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        "\$ 65 ",
-                        style: TextStyle(
+                        "\$ $price2",
+                        style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Color(0xff44655f)),
                       ),
-                      SizedBox(width: 40),
-                      Icon(
+                      const SizedBox(width: 40),
+                      const Icon(
                         Icons.star,
                         color: Color(0xff44655f),
                       ),
                       Text(
-                        "4,9",
-                        style: TextStyle(
+                        "$rate2",
+                        style: const TextStyle(
                             color: Color(0xff44655f),
                             fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
-                  Container(
+                  SizedBox(
                     width: 450,
                     height: 70,
-                    child: Image.asset("images/2.png"),
+                    child: Image.asset(image2),
                   )
                 ],
               ),
             ),
           ),
-          const SizedBox(width: 13),
-          Container(
-            width: 160,
-            height: 140,
-            color: const Color(0xffb2c0c5),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const Text(
-                    "Green Chaire",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff44655f)),
-                  ),
-                  Row(
-                    children: const [
-                      Text(
-                        "\$ 65 ",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff44655f)),
-                      ),
-                      SizedBox(width: 40),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xff44655f),
-                      ),
-                      Text(
-                        "4,9",
-                        style: TextStyle(
-                            color: Color(0xff44655f),
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  Container(
-                    width: 450,
-                    height: 70,
-                    child: Image.asset("images/1.png"),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(width: 13),
-          Container(
-            width: 160,
-            height: 140,
-            color: const Color(0xffb2c0c5),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const Text(
-                    "Green Chaire",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff44655f)),
-                  ),
-                  Row(
-                    children: const [
-                      Text(
-                        "\$ 65 ",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff44655f)),
-                      ),
-                      SizedBox(width: 40),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xff44655f),
-                      ),
-                      Text(
-                        "4,9",
-                        style: TextStyle(
-                            color: Color(0xff44655f),
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  Container(
-                    width: 450,
-                    height: 70,
-                    child: Image.asset("images/2.png"),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(width: 13),
-          Container(
-            width: 160,
-            height: 140,
-            color: const Color(0xffb2c0c5),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const Text(
-                    "Green Chaire",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff44655f)),
-                  ),
-                  Row(
-                    children: const [
-                      Text(
-                        "\$ 65 ",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff44655f)),
-                      ),
-                      SizedBox(width: 40),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xff44655f),
-                      ),
-                      Text(
-                        "4,9",
-                        style: TextStyle(
-                            color: Color(0xff44655f),
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  Container(
-                    width: 450,
-                    height: 70,
-                    child: Image.asset("images/1.png"),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(width: 13),
-          Container(
-            width: 160,
-            height: 140,
-            color: const Color(0xffb2c0c5),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const Text(
-                    "Green Chaire",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff44655f)),
-                  ),
-                  Row(
-                    children: const [
-                      Text(
-                        "\$ 65 ",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff44655f)),
-                      ),
-                      SizedBox(width: 40),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xff44655f),
-                      ),
-                      Text(
-                        "4,9",
-                        style: TextStyle(
-                            color: Color(0xff44655f),
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  Container(
-                    width: 450,
-                    height: 70,
-                    child: Image.asset("images/2.png"),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -75,10 +75,8 @@ class FirstScreenState extends State<FirstScreen> {
               ),
               const SizedBox(height: 8),
               buildIndicator(),
-              const SizedBox(height: 12),
-              const Row1(),
-              const SizedBox(height: 15),
-              const Row2(),
+              Row1(),
+              Row2(),
             ],
           )
         ],

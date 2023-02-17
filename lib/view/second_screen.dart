@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -226,4 +226,4 @@ class _SecondScreenState extends State<SecondScreen> {
       ),
     );
   }
-}
+}*/

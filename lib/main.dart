@@ -1,4 +1,5 @@
 import 'package:first_ui/view/first_screen.dart';
+import 'package:first_ui/view/image_second_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primaryColor: Colors.white),
       debugShowCheckedModeBanner: false,
       home: const FirstScreen(),
+      //home: MyHomePage(),
     );
   }
 }
